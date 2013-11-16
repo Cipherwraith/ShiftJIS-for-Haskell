@@ -35,5 +35,5 @@ writeFileUTF8AsShiftJIS :: FilePath -> UTF8 -> IO ()
 writeFileUTF8AsShiftJIS filePath content = B.writeFile filePath (utf8toShiftJIS content)
 
 -- Downloads a website that is encoded in shift-jis and automatically converts it to UTF8
-downloadFileShiftJISAsUTF8 :: URL -> IO ShiftJIS
-downloadFileShiftJISAsUTF8 url = simpleHttp url
+downloadFileShiftJISAsUTF8 :: URL -> IO UTF8
+downloadFileShiftJISAsUTF8 url = shiftJIStoUTF8 <$> simpleHttp url
